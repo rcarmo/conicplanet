@@ -32,7 +32,7 @@
   http://www.m2c3.com/alpocs/tdl1999/schlyter110199/ppcomp.html
 */
 
-#include <iostream.h>
+#include <iostream>
 #include <math.h>
 #include <stdlib.h>
 

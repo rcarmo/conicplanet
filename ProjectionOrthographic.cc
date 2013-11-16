@@ -25,7 +25,7 @@
 #include <math.h>
 #include <string.h>
 
-#include <iostream.h>
+#include <iostream>
 
 #include "get_color.h"
 #include "location.h"

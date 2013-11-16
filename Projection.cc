@@ -21,7 +21,7 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ******************************************************************************/
 
-#include <iostream.h>
+#include <iostream>
 #include <stdlib.h>
 #include <string.h>
 
@@ -64,7 +64,7 @@ Projection::create_projection ()
 int 
 Projection::pixel_to_spher (int x, int y, double &lon, double &lat)
 {
-  cout << "Projection::pixel_to_spher called.\n";
+  std::cout << "Projection::pixel_to_spher called.\n";
   exit (EXIT_FAILURE);
   return (0);    // keep some compilers happy
 }
@@ -72,7 +72,7 @@ Projection::pixel_to_spher (int x, int y, double &lon, double &lat)
 int 
 Projection::spher_to_pixel (double lon, double lat, int &x, int &y)
 {
-  cout << "Projection::spher_to_pixel called.\n";
+  std::cout << "Projection::spher_to_pixel called.\n";
   exit (EXIT_FAILURE);
   return (0);    // keep some compilers happy
 }
@@ -80,7 +80,7 @@ Projection::spher_to_pixel (double lon, double lat, int &x, int &y)
 void
 Projection::set_radius (double r)
 {
-  cout << "Projection::set_radius called.\n";
+  std::cout << "Projection::set_radius called.\n";
   exit (EXIT_FAILURE);
 }
 

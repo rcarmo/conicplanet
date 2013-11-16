@@ -21,7 +21,7 @@
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ******************************************************************************/
 
-#include <iostream.h>
+#include <iostream>
 #include <stdlib.h>
 #include <math.h>
 
@@ -105,7 +105,7 @@ ProjectionRectangular::y_to_latitude (int y)
 void
 ProjectionRectangular::create_projection ()
 {
-  cout << "ProjectionRectangular::create_projection() called\n";
+  std::cout << "ProjectionRectangular::create_projection() called\n";
   exit (EXIT_FAILURE);
 }
 

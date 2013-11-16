@@ -22,8 +22,8 @@
 ******************************************************************************/
 
 #include <stdio.h>
-#include <fstream.h>
-#include <iostream.h>
+#include <fstream>
+#include <iostream>
 #include <limits.h>
 #include <stdlib.h>
 #include <string.h>
@@ -394,7 +394,7 @@ unsigned char *read_png(char *filename, int &width, int &height)
   
   if ((infile = fopen(filename, "rb")) == NULL)
   {
-  	cout << "Unable to open " << filename << "\n";
+    std::cout << "Unable to open " << filename << "\n";
   	exit(1);
   }
 
@@ -556,7 +556,7 @@ unsigned char *read_jpeg(char *filename, int &width, int &height)
   
   if ((f = fopen(filename, "rb")) == NULL)
   {
-  	cout << "Unable to open " << filename << "\n";
+    std::cout << "Unable to open " << filename << "\n";
   	exit(1);
   }
 
