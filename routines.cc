@@ -386,6 +386,7 @@ unsigned char *read_png(char *filename, int &width, int &height)
   png_structp png_ptr;
   png_infop info_ptr;
   png_bytepp row_pointers;
+  jmp_buf env;
   unsigned char *ptr = NULL, *rgb_data = NULL;
   png_uint_32 w, h;
   int bit_depth, color_type, interlace_type;
@@ -417,7 +418,7 @@ unsigned char *read_png(char *filename, int &width, int &height)
       return (0);
     }
   
-  if (setjmp (png_ptr->jmpbuf))
+  if (setjmp (env))
     {
       png_destroy_read_struct (&png_ptr, &info_ptr, (png_infopp) NULL);
       fclose (infile);
