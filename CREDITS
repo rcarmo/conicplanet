@@ -1,0 +1,45 @@
+Conic Planet 1.2
+July 17, 2000
+
+A lot of the code of this package is from the amazing XPlanet
+program written by Hari Nair <hari@alumni.caltech.edu>.
+So a lot of credit for this work goes to him.
+
+// Snip from XPlanet's CREDITS ---
+
+Most of the algorithms are taken from "Astronomical Formulae for
+Calculators" by Jean Meeus, published by Willman-Bell.  The rotational
+parameters for the other terrestrial planets are taken from "Practical
+Ephemeris Calculations" by Oliver Montenbruck, published by
+Springer-Verlag.  Rotational parameters for the Moon are taken from
+Davies et al. (1996), Celestial Mechanics 63, 127--148.
+
+Thanks to ... 
+
+James Baughman for the HP-UX patches and help with the autoconf macros.
+
+Erik Bruhwiler of the Living Planet, Inc., for graciously supplying
+the maps for my web page.
+
+Matthew Francey for help with the projections.
+
+Kirk Johnson for writing Xearth in the first place.  
+
+Jeremie Petit for some Digital Unix help.
+
+Henri Simoes for the french translation of the man page.
+
+Per Erik Stendahl and Larry Reeder for catching a bug in
+process_args().  Hopefully I won't be seeing too many more mysterious
+segfaults. 
+
+John Tillema for finding a bug where markers weren't positioned
+properly if --center was specified.
+
+Detlev Zundel for the debian packages, man pages, and the orbit option.
+
+// --- SNIP
+
+Mukund Iyer
+muks@crosswinds.net
+

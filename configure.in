@@ -1,0 +1,48 @@
+
+dnl Process this file with autoconf to produce a configure script.
+
+dnl Are we in the right directory?  Check for the existence of conicplanet.cc.
+AC_INIT(conicplanet.cc)
+
+AC_CONFIG_AUX_DIR(./autoconf)
+
+AC_PATH_PROG(CP, cp, cp)
+AC_PATH_PROG(GZIP, gzip, gzip)
+AC_PROG_INSTALL
+AC_PATH_PROG(RM, rm, rm)
+AC_PATH_PROG(STRIP, strip, strip)
+AC_PATH_PROG(TAR, tar, tar)
+
+version="1.2"
+AC_SUBST(version)
+
+dnl Checks for compilers.
+AC_PROG_CC
+AC_PROG_CXX
+
+dnl Check for strptime function
+AC_CONFIG_HEADER(checkfuncs.h)
+AC_CHECK_FUNC(strptime, AC_DEFINE(HAVE_STRPTIME))
+
+AC_CHECK_HEADERS(string.h strings.h)
+
+if test "x$GXX" = "xyes"; then
+    OTHER_CXXFLAGS="-Wall -O2 -fomit-frame-pointer -ffast-math -funroll-loops -fexpensive-optimizations"
+fi
+AC_SUBST(OTHER_CXXFLAGS)
+
+AC_FIND_GRAPHICS_LIBS
+
+AC_OUTPUT(Makefile)
+
+echo "
+Conic Planet $version is now hopefully configured!
+You may now run make to compile it. You'll find an
+executable named "conicplanet.cgi" which you'll have to
+copy into your cgi-bin directory of your webserver.
+Please check auxfiles.h and specify the correct
+data directory path BEFORE YOU COMPILE.
+Please take a look at INSTALL for installation
+instructions.
+
+"

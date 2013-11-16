@@ -1,0 +1,49 @@
+
+ChangeLog for Conic Planet:
+
+17 July 2000
+
+	Version 1.2
+	Added code for enhancment of contrast of the SSEC cloud image
+	and smoothening of seam at 180 deg. longitude line in the
+	SSEC cloud image. Added brightness and gamma-correction
+	controls. Added support for greyscale (R=G=B) output.
+
+5 July 2000
+
+	Version 1.1.1f
+	Bug fix for a large error in scaling code.
+
+5 July 2000
+
+	Version 1.1.1
+	Cloud handling code modified to include a threshold
+	level for what clouds are shown. The option "smoothen"
+	was added for generating image at a higher resolution and
+	using a bilinear filter to resize it, so that aliasing artifacts
+	are smoothened out. PNG support was added for output content-type.
+	The output content-type is now set using the "contenttype" option.
+	Some other minor tweaks.
+
+27 June 2000
+
+	Version 1.1.0
+	Support for more planets, moons n' stuff. Another option
+	"terminator" added. Clouds support added using the
+	cloud information available at the Space Science and
+	Engineering Center (SSEC) at the University of Wisconsin.
+	Many thanks again to Hari Nair (I swear I tried it myself,
+	but that border killed my mollweide->rectangular
+	transformation). Added aclocal.m4 for detecting libjpeg.
+	A PHP form (test.php) is included to view the program's various
+	features. This can be used with a PHP-enabled webserver.
+
+14 June 2000
+
+	Version 1.0.0
+	Initial public code-release
+
+
+Mukund Iyer
+muks@crosswinds.net
+

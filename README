@@ -1,0 +1,187 @@
+Conic Planet 1.2
+July 17, 2000
+
+Conic Planet is based on and similar to XPlanet, where an image of
+the earth is rendered.  Azimuthal, Mercator, Mollweide, orthographic, or
+rectangular projections can be displayed as well as a window with a
+globe the user can rotate interactively.  The other terrestrial
+planets may also be displayed.  The latest version can be found
+by visiting the Conic Planet project page at:
+http://sourceforge.net/projects/conic/
+
+A lot of code of Conic Planet has been written by Hari Nair
+<hari@alumni.caltech.edu>. So a lot of credit for this work
+goes to him.
+
+Most of the algorithms are taken from "Astronomical Formulae for
+Calculators" by Jean Meeus, published by Willman-Bell.  The rotational
+parameters for the other terrestrial planets are taken from "Practical
+Ephemeris Calculations" by Oliver Montenbruck, published by
+Springer-Verlag.  Rotational parameters for the Moon are taken from
+Davies et al. (1996), Celestial Mechanics 63, 127--148.  Most of the
+map projection algorithms are from "Map Projections - A Working
+Manual" by John P. Snyder, published by the U.S. Department of the
+Interior.
+
+Conic Planet is free software, distributed according to the terms of the
+GNU General Public License.  See the COPYING file for details.
+
+See the INSTALL file for installation instructions.
+
+
+--------------------------------------------------------------
+
+
+Valid CGI key/value pair options to Conic Planet are:
+
+body=mercury/venus/earth/moon/mars/jupiter/io/europa/ganymede/callisto/
+     saturn/titan/uranus/neptune/pluto
+Render an image of the specified planet/moon.
+
+centerx=xvalue
+centery=yvalue
+Place the center of the globe at (xvalue,yvalue). You can use this with
+the "radius" option to put a small image anywhere on the screen.  If no
+projection is explicitly specified, orthographic is assumed, but this
+option may also be used with the azimuthal and mollweide projections.
+
+clouds=0/1 [0 = no, 1 = yes] - currently unimplemented
+Overlay clouds onto image. Overlaying clouds slows Conic Planet
+down considerably (but it looks really nice).
+
+position=dayside/earthside/moonside/nightside
+
+	dayside:
+Render the image as seen from directly above the subsolar point.  If no
+projection is explicitly specified, orthographic is assumed, but this
+option may also be used with any projection except rectangular. 
+
+	earthside:
+Render the image as seen from the earth. This option only works with
+other planets, specified with "body".  If no projection is explicitly
+specified, orthographic is assumed, but this option may also be used
+with any projection except rectangular.
+
+	moonside:
+Render the image as seen from the moon.  If no projection is
+explicitly specified, orthographic is assumed, but this option may
+also be used with any projection except rectangular.
+
+	nightside                   
+Render the image as seen from directly above the anti-subsolar point.
+If no projection is explicitly specified, orthographic is assumed, but
+this option may also be used with any projection except rectangular.
+
+filter=0/1 [0 = no, 1 = yes]
+Use bilinear interpolation to compute the color of each pixel instead
+of nearest-neighbor interpolation.  It slows down the computation, but
+it can look a lot better, particularly if you're using a low
+resolution map.  If no projection is explicitly specified,
+orthographic is assumed, but this option may also be used with any
+projection except rectangular.
+
+fuzz=fuzzfactor
+Let the day and night hemispheres blend into one another for pixels
+within fuzz degrees of the terminator.  The default value is 6.
+
+width=widthvalue
+height=heightvalue
+Specify the width and height of the output bitmap.  
+
+grid=0/1  [0 = no, 1 = yes]
+Draw a longitude/latitude grid.  The spacing of major grid lines and
+dots between major grid lines can be controlled with the "grid1" and
+"grid2" options (see below).
+
+grid1=grid1
+Specify the spacing of grid lines. Grid lines are drawn with a
+90/grid1 degree spacing. The default value for grid1 is 6,
+corresponding to 15 degrees between major grid lines.  This option
+implies the "grid" option.
+
+grid2=grid2
+Specify the spacing of dots along grid lines.  Grid dots are drawn
+with a 90/(grid1 x grid2) degree spacing.  The default value for grid2
+is 15; combined with the default grid1 value of 6, this corresponds to
+placing grid dots on a one degree spacing.  This option implies the
+"grid" option.
+
+latitude=latitudevalue
+Render the globe as seen from above the specified latitude (in
+degrees).  The default value is 0. If no projection is
+explicitly specified, orthographic is assumed, but this option may
+also be used with any projection except rectangular.
+
+longitude=longitudevalue
+Place the observer above the specified longitude (in degrees).
+Longitude is positive going east, negative going west (for earth and
+moon), so for example Los Angeles is at -118 or 242.  The default
+value is 0.
+
+night=0/1 [0 = no, 1 = yes]
+Use a night map image.  If this option is not
+specified, the night map will be a copy of the day map,
+modified as described with the "shade" parameter.
+
+projection=azimuthal/mercator/mollweide/orthographic/rectangular
+The projection type may be one of azimuthal, mercator, mollweide,
+orthographic, or rectangular.
+
+radius=radiusvalue
+Render the globe with a radius of radiusvalue percent of the screen height.
+The default value is 50% of the screen height.  If no projection is
+explicitly specified, orthographic is assumed, but this option may
+also be used with the azimuthal and mollweide projections.  If used
+with the mollweide projection, the radius value is the value of the
+semimajor (horizontal) axis as a percent of the screen width.
+
+range=rangevalue
+Render the globe as seen from a distance of rangevalue from the planet's
+center, in units of the planetary radius.  The default value is 1000.
+Note that if you use very close ranges the field of view of the screen
+can be a lot greater than 180 degrees!  If you want an "up close" image
+use the "radius" option.  This option implies projection=orthographic. 
+
+rotate=angle 
+Rotate the globe by angle degrees counterclockwise so that north isn't
+at the top.  The default value is 0.  My friends in the Southern
+Hemisphere can use rotate=180 to make the earth look like it should!
+If no projection is explicitly specified, orthographic is assumed, but
+this option may also be used with any projection except rectangular.
+For non-orthographic projections, the globe is rotated and then
+projected, if that helps you visualize what to expect.
+
+shade=shadevalue
+If night=1 is not specified, set the brightness of the night map
+to shade percent of the day map.  If shade is 100, the day and night
+maps will be identical.  The default value is 30.
+
+smoothen=factor [1 = off, 2 = double image size, 3 = triple image size, ...]
+This option multiplies the image resolution by a factor, and then
+uses bilinear interpolation to resize the image to the actual size.
+It slows down the computation, but it can look a lot better,
+particularly if you're generating low res pictures.
+
+starfreq=frequency
+Fraction of background pixels that will be colored white.  The default
+value is 0.001. If no projection is explicitly specified, orthographic
+is assumed, but this option may also be used with the azimuthal and
+Mollweide projections.
+
+terminator=morning/evening
+Place the observer above the specified terminator. For
+non-rectangular projections, the image will be rotated so that
+the terminator is approximately vertical.  This can be combined
+with the "rotate" option to orient the terminator any way you want.
+
+
+Conic Planet looks in the directory specified in auxfiles.h
+for the file to use as the day map.  This file should be named
+body.jpg, where body can be any of the various body names such
+as earth.jpg, mars.jpg, etc. The night-map is called body-night.jpg,
+such as earth-night.jpg. The cloud-map takes the form body-cloud.png,
+such as earth-cloud.png (Note that this is in PNG format).
+
+Mukund Iyer
+muks@crosswinds.net
+

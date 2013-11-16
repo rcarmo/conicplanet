@@ -1,0 +1,93 @@
+SHELL = /bin/sh
+
+CP = @CP@
+GZIP = @GZIP@
+INSTALL = @INSTALL@
+RM = @RM@
+STRIP = @STRIP@
+TAR = @TAR@
+
+includedir = @includedir@
+version = @version@
+distdir = conicplanet-$(version)
+
+# gotta fix this crap! who's gonna make an aclocal.m4?
+
+GRAPHICLIBS_CFLAGS=
+GRAPHICLIBS_LIBS= @GRAPHICS_LIBS@
+
+CXX = @CXX@
+CXXFLAGS += @OTHER_CXXFLAGS@ $(GRAPHICLIBS_CFLAGS) -I$(includedir)
+
+LIBS = $(GRAPHICLIBS_LIBS) @LIBS@ -lm
+
+SRCS = 	conicplanet.cc get_color.cc location.cc moonpos.cc \
+	options.cc planet.cc Projection.cc ProjectionAzimuthal.cc \
+	ProjectionMercator.cc ProjectionMollweide.cc \
+	ProjectionOrthographic.cc ProjectionRectangular.cc \
+	sunpos.cc util.cc routines.cc cloud.cc cgi.c
+
+OBJS = $(SRCS:.cc=.o)
+AUXDIR = $(notdir $(wildcard auxdir/*.@mapext@ auxdir/*@markerfile@))
+
+.cc.o: 
+	$(CXX) -c $(CXXFLAGS) $< 
+
+all: conicplanet.cgi
+
+conicplanet.cgi: $(OBJS)
+	$(CXX) -o $@ $^ $(LIBS)
+
+conicplanet.o: auxfiles.h checkfuncs.h options.h planet.h \
+Projection.h ProjectionAzimuthal.h ProjectionMercator.h ProjectionMollweide.h \
+ProjectionOrthographic.h ProjectionRectangular.h util.h routines.h cloud.h
+
+get_color.o: options.h util.h conicplanet.h
+
+location.o: location.h util.h
+
+cgi.o: cgi.h
+
+moonpos.o: util.h
+
+options.o: checkfuncs.h cgi.h options.h util.h conicplanet.h
+
+planet.o: planet.h util.h
+
+Projection.o: get_color.h location.h options.h planet.h util.h \
+routines.h
+
+ProjectionAzimuthal.o: ProjectionAzimuthal.h get_color.h options.h util.h
+
+ProjectionMollweide.o: ProjectionMollweide.h get_color.h options.h util.h
+
+ProjectionMercator.o: ProjectionMercator.h get_color.h options.h util.h
+
+ProjectionOrthographic.o: ProjectionOrthographic.h get_color.h location.h \
+options.h planet.h util.h conicplanet.h routines.h
+
+ProjectionRectangular.o: ProjectionRectangular.h location.h options.h util.h
+
+sunpos.o: util.h
+
+routines.o: location.h options.h planet.h util.h conicplanet.h
+
+orbit.o: orbit.cc orbit.h
+
+cloud.o: cloud.cc cloud.h routines.h
+
+dist: 	
+	$(INSTALL) -d $(distdir)
+	$(CP) BUGS COPYING CREDITS ChangeLog INSTALL Makefile.in README *.c \
+	*.cc *.h *.h.in configure* aclocal.m4 test.php $(distdir)
+	$(CP) -r autoconf $(distdir)
+	$(TAR) cf $(distdir).tar $(distdir)
+	$(GZIP) -9 $(distdir).tar
+	$(RM) -fr $(distdir)
+
+clean:
+	$(RM) -f *.o 
+
+distclean:
+	$(RM) -f *.o checkfuncs.h conicplanet.cgi \
+	config.* Makefile

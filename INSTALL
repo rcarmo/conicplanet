@@ -1,0 +1,49 @@
+Conic Planet 1.2
+July 17, 2000
+
+The usual sequence of "./configure; make" should build the program.
+Conic Planet needs the Independent JPEG Group's libjpeg library and
+the PNG library to compile. libjpeg is used to read the map files and
+also write the output image/jpeg content. The PNG library is used
+to read the cloud information.
+
+OS dependent things:
+On Digital Unix, with the native C++ compiler, compile with the option
+-ieee_with_no_inexact.  
+
+You need maps to use this program. For pointers to good maps,
+visit the XPlanet homepage. http://xplanet.sourceforge.net/
+
+To check a running version of this program, visit
+http://conic.sourceforge.net/conicplanet/
+
+You may have to provide CGI key/value pairs with various
+arguments as required. Acceptable key/value pairs can be
+found in README.
+
+Visit the Conic Planet project page at:
+http://sourceforge.net/projects/conic/
+
+Conic Planet looks in the directory specified in auxfiles.h
+for the mapfiles. Files should be named body.jpg,
+where body can be mercury, venus, earth, moon, or mars.
+
+A list of maps i use are:
+
+earth.jpg                // regular day maps
+mercury.jpg
+venus.jpg
+moon.jpg
+mars.jpg
+
+earth-highres.jpg        // high resolution
+mercury-highres.jpg
+venus-highres.jpg
+moon-highres.jpg
+mars-highres.jpg
+
+earth-night.jpg          // earth's night map
+
+Mukund Iyer
+muks@crosswinds.net
+
