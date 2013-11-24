@@ -79,6 +79,7 @@ class options
   int          terminator;
   int          usecloud;
   int          usenight;
+  bool         printcontenttype;
 
   unsigned int window_width;
   unsigned int window_height;
@@ -124,6 +125,7 @@ class options
       window_height    = 600;
       window_x         = 0;
       window_y         = 0;
+      printcontenttype = false;
 
       gettimeofday (&time, NULL);
     }

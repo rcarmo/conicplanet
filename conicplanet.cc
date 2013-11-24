@@ -64,12 +64,14 @@ main (int argc, char **argv)
   	return 0;
   }	
 
-  if (opts.contenttype == IMAGEJPEG)
-	 printf("Content-type: image/jpeg\n\n");
-  else if (opts.contenttype == IMAGEPNG)
-	 printf("Content-type: image/png\n\n");
-  else
-	 printf("Content-type: image/jpeg\n\n");
+  if (opts.printcontenttype) {
+    if (opts.contenttype == IMAGEJPEG)
+        printf("Content-type: image/jpeg\n\n");
+    else if (opts.contenttype == IMAGEPNG)
+        printf("Content-type: image/png\n\n");
+    else
+        printf("Content-type: image/jpeg\n\n");
+  }
   
   // Suggested by Francesco Usseglio Gaudi for date label
   setlocale (LC_ALL, "");
