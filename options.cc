@@ -41,7 +41,7 @@ bool
 is_valid_path (const char *path)
 {
     struct stat st;
-    if(lstat(path, &st) == 0) {
+    if(stat(path, &st) == 0) {
         if(S_ISDIR(st.st_mode))
             return true;
         else
