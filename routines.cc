@@ -536,7 +536,7 @@ void write_jpeg(FILE *outfile, int width, int height, unsigned char *rgb_data)
 	  cinfo.input_components = 3;
 	  cinfo.in_color_space = JCS_RGB;
 	  jpeg_set_defaults(&cinfo);
-	  jpeg_set_quality(&cinfo, (100 * 99) >> 8, TRUE);
+	  jpeg_set_quality(&cinfo, 100, TRUE);
 	  jpeg_start_compress(&cinfo, TRUE);
 	  row_stride = cinfo.image_width * 3;
 	  while (cinfo.next_scanline < cinfo.image_height)
