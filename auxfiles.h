@@ -27,7 +27,7 @@
 // EDIT THIS PATH BELOW TO THAT OF YOUR DATA DIRECTORY
 // WHERE ALL THE MAP FILES ARE STORED!!
 
-char *dirdata              = "/home/groups/conic/data/";
+char *dirdata              = "/usr/share/conicplanet/data/";
 char *defaultmapext        = ".jpg";
 
 #endif
