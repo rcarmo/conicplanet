@@ -47,6 +47,8 @@ enum ContentTypes
 class options 
 {
  public:
+  char         *dirdata;
+  char         *defaultmapext;
   int          body;
   int          brightness;
   int          centx;
@@ -89,7 +91,7 @@ class options
   options() 
     {
       body             = 0;
-      brightness        = 100;
+      brightness       = 100;
       centx            = -1;
       centy            = -1;
       cloud            = NULL;

@@ -26,19 +26,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
 
 #include "cgi.h"
 #include "checkfuncs.h"
 #include "options.h"
 #include "util.h"
 #include "conicplanet.h"
+#include "auxfiles.h"
 
 options opts;
+
+bool
+is_valid_path (const char *path)
+{
+    struct stat st;
+    if(lstat(path, &st) == 0) {
+        if(S_ISDIR(st.st_mode))
+            return true;
+        else
+            return false;
+    }
+    else
+        return false;
+}
 
 void 
 process_args (int argc, char **argv)
 {
 	const char	*temp;
+
+    if ((argc > 1) && is_valid_path(argv[1]))
+        opts.dirdata = argv[1];
+    else
+        opts.dirdata = dirdata;
+
+    opts.defaultmapext = defaultmapext;
 
 	temp = cgi_getentrystr("contenttype");
 

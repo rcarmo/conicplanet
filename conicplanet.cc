@@ -30,7 +30,6 @@
 #include <string.h>
 
 #include "cgi.h"
-#include "auxfiles.h"
 #include "checkfuncs.h"
 #include "cloud.h"
 #include "options.h"
@@ -241,21 +240,21 @@ main (int argc, char **argv)
   init_display (window_width, window_height);
 
    opts.day = new char [300];
-   strcpy (opts.day, dirdata);
+   strcpy (opts.day, opts.dirdata);
    strcat (opts.day, current_body);
    if ((opts.window_width > 800) || (opts.window_height > 800) || (opts.radius > 75))
    	strcat(opts.day, "-highres");
    
-   strcat (opts.day, defaultmapext);
+   strcat (opts.day, opts.defaultmapext);
 
    opts.night = new char [300];
-   strcpy (opts.night, dirdata);
+   strcpy (opts.night, opts.dirdata);
    strcat (opts.night, current_body);
    strcat (opts.night, "-night");
-   strcat (opts.night, defaultmapext);
+   strcat (opts.night, opts.defaultmapext);
 
    opts.cloud = new char [300];
-   strcpy (opts.cloud, dirdata);
+   strcpy (opts.cloud, opts.dirdata);
    strcat (opts.cloud, current_body);
    strcat (opts.cloud, "-cloud.png");
   
