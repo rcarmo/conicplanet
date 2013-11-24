@@ -45,7 +45,7 @@
 #include "util.h"
 #include "routines.h"
 
-int texture_width=1024, texture_height=1024;
+int texture_width=4096, texture_height=4096;
 
 unsigned char *elevation = NULL;
 ProjectionRectangular *image_rect;
@@ -244,9 +244,6 @@ main (int argc, char **argv)
    opts.day = new char [300];
    strcpy (opts.day, opts.dirdata);
    strcat (opts.day, current_body);
-   if ((opts.window_width > 800) || (opts.window_height > 800) || (opts.radius > 75))
-   	strcat(opts.day, "-highres");
-   
    strcat (opts.day, opts.defaultmapext);
 
    opts.night = new char [300];
